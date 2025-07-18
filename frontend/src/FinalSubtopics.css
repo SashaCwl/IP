@@ -1,0 +1,66 @@
+
+.final-subtopics-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.final-subtopics-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.final-subtopics-container details {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background-color: #f9f9fb;
+}
+
+.final-subtopics-container summary {
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  color: #444;
+}
+
+.final-subtopics-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.final-subtopics-container li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.final-subtopics-container button {
+  margin-left: 6px;
+  padding: 10px 15px;
+  font-size: 15px;
+  min-width: auto;
+  width: fit-content;
+  height: auto;
+  line-height: 1;
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.final-subtopics-container button:hover {
+  background-color: #574b90;
+}
+
+

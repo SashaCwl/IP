@@ -1,0 +1,96 @@
+
+:root {
+  --primary-color: #4A90E2;
+  --secondary-color: #6c63ff;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --header-color: #2c3e50;
+  --button-hover-color: #357ABD;
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar {
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.navbar button {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background-color: var(--button-hover-color);
+  color: white;
+}
+
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+
+h2, h3, h4, h5 {
+  color: var(--header-color);
+  margin-bottom: 10px;
+}
+
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+
+.highlight {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+
+
+
