@@ -19,6 +19,10 @@ from collections import defaultdict
 from collections import Counter
 from sqlalchemy import func
 from database import get_db  
+from pydantic import BaseModel, Field, constr
+from enum import Enum
+
+
 
 #app initialisation
 app = FastAPI()
@@ -56,6 +60,22 @@ class QuestionRequest(BaseModel):
     question_type: str
     job_role: str
     experience_level: str
+
+class SubtopicRequest(BaseModel):
+    job_role: constr(min_length=1)
+    experience_level: constr(min_length=1)
+
+class QuestionType(str, Enum):
+    technical = "technical"
+    behavioral = "behavioral"
+
+class QuestionRequest(BaseModel):
+    subtopic: constr(min_length=1)
+    question_type: QuestionType
+    job_role: constr(min_length=1)
+    experience_level: constr(min_length=1)
+
+
 
 #endpoints
 #breaks down a job role into 6-8 interview subtopics using LLM
