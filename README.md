@@ -14,7 +14,7 @@ To run this app, you'll need the following installed:
 
 > Python Dependencies (Backend)
 ```bash
-pip install fastapi uvicorn sqlalchemy pydantic langchain langchain_community passlib[bcrypt] python-multipart
+pip install fastapi uvicorn sqlalchemy pydantic langchain langchain_community passlib[bcrypt] python-multipart langchian_ollama
 ```
 
 > Node Dependencies (Frontend)
@@ -32,6 +32,8 @@ ollama run llama3
 ```
 - Make sure it's running at `http://localhost:11434`, as required by `main.py`.
 
+
+> Make sure you have two terminals open for this. Run these commands on them individually
 > Start the FastAPI Backend (cd backend)
 ```bash
 uvicorn main:app --reload
