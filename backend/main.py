@@ -228,7 +228,7 @@ async def check_response(request: Request, db: Session = Depends(get_db)):
     user_id = data.get("user_id")  
     job_role = data.get("job_role")
     subtopic = data.get("subtopic")
-    #prompts the LLM for constructive feedback and a score out of 10 based on the users answer
+    #initially prompts the LLM for constructive feedback and a score out of 10 based on the users answer
     initial_prompt = f"""Here's the interview question:\n\n{question}\n\nCandidate's answer:\n\n{answer}\n\n
     Please provide constructive feedback and a score out of 10.
     **Don't include phrases like 'I'm happy to help' in your response**"""
@@ -236,17 +236,15 @@ async def check_response(request: Request, db: Session = Depends(get_db)):
     chain = llm | StrOutputParser()
     raw_feedback = chain.invoke(initial_prompt)
     print("initial feedback:", raw_feedback)
-    # Step 2: Refine and validate the feedback
+    #prmopts the LLM once more to refine and validate the initial feedback
     refinement_prompt = f"""
     Here is the original feedback generated for a candidate's interview response:\n\n{raw_feedback}\n\n
-    Please validate its clarity, relevance, and tone: Based off of this {question} and this {answer}. Then refine it to be more actionable and structured.
+    Please validate its clarity, relevance, and tone: Based off of this {question} and this {answer}. 
+    Then refine it to be more actionable and structured.
     Return the result in this format:
-
     Score: <number>/10
-
     Constructive Feedback:
     <short paragraph>
-
     Reasoning:
     <optional deeper explanation>"""
 
