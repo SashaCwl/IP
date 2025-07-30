@@ -229,12 +229,30 @@ async def check_response(request: Request, db: Session = Depends(get_db)):
     job_role = data.get("job_role")
     subtopic = data.get("subtopic")
     #prompts the LLM for constructive feedback and a score out of 10 based on the users answer
-    prompt_text = f"""Here's the interview question:\n\n{question}\n\nCandidate's answer:\n\n{answer}\n\n
+    initial_prompt = f"""Here's the interview question:\n\n{question}\n\nCandidate's answer:\n\n{answer}\n\n
     Please provide constructive feedback and a score out of 10.
     **Don't include phrases like 'I'm happy to help' in your response**"""
     #chains the prompt with the LLM and string output parser  
     chain = llm | StrOutputParser()
-    result = chain.invoke(prompt_text)
+    raw_feedback = chain.invoke(initial_prompt)
+    print("initial feedback:", raw_feedback)
+    # Step 2: Refine and validate the feedback
+    refinement_prompt = f"""
+    Here is the original feedback generated for a candidate's interview response:\n\n{raw_feedback}\n\n
+    Please validate its clarity, relevance, and tone: Based off of this {question} and this {answer}. Then refine it to be more actionable and structured.
+    Return the result in this format:
+
+    Score: <number>/10
+
+    Constructive Feedback:
+    <short paragraph>
+
+    Reasoning:
+    <optional deeper explanation>"""
+
+    refined_result = llm | StrOutputParser()
+    result = refined_result.invoke(refinement_prompt)
+   
     #extracts the necessary data
     score_match = re.search(r"Score:\s*(\d+)", result)
     score = int(score_match.group(1)) if score_match else None
