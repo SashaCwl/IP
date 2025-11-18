@@ -1,0 +1,59 @@
+1. Subtopic Generation Prompt
+Break down the role of a {job_role} into 6-8 key interview subtopics for a {experience_level} candidate. 
+Return the result as a JSON object with a 'subtopics' key containing a list of strings. 
+Example: {"subtopics": ["Data Structures", "System Design", "Databases"]}.
+
+2. Subtopic Validation Prompt
+Validate the following subtopics for a {job_role} interview: {subtopics}. 
+Are they relevant and logically grouped? Provide feedback or corrections.
+
+3. Subtopic Refinement Prompt
+Based on the following feedback: "{feedback}", refine the subtopics for a {job_role} interview. 
+The original subtopics were: {subtopics}. 
+Return only a JSON object with a 'refined_subtopics' key containing a list of strings. 
+Example: {"refined_subtopics": ["Classroom Management", "Lesson Planning", "Student Engagement"]}.
+
+4. Question Generation Prompt
+Generate 7 {question_type} interview questions for a {experience_level} {job_role} under the topic '{subtopic}'. 
+Each question should:
+- Be answerable in 5-10 minutes
+- Be open-ended but focused
+Avoid take-home project-style prompts.
+**Return ONLY the 7 questions in a numbered list with no introduction or explanation.**
+
+
+5. Subtopic Categorization Prompt
+Categorize the following interview subtopics into one of these categories:
+- Technical Skills
+- Soft Skills
+- Advanced Topics
+- General Skills
+Subtopics: {subtopics}
+Return the result as a JSON object with each category as a key and a list of subtopics as values.
+
+6. Initial Feedback Prompt (Interview Answer Evaluation)
+Here's the interview question:
+
+{question}
+
+Candidate's answer:
+
+{answer}
+
+Please provide constructive feedback and a score out of 10.
+Don't include phrases like "I'm happy to help" in your response.
+
+7. Feedback Refinement Prompt
+Here is the original feedback generated for a candidate's interview response:
+
+{raw_feedback}
+
+Please validate its clarity, relevance, and tone: Based off of this {question} and this {answer}. 
+Then refine it to be more actionable and structured.
+
+Return the result in this format:
+Score: <number>/10
+Constructive Feedback:
+<short paragraph>
+Reasoning:
+<optional deeper explanation>
